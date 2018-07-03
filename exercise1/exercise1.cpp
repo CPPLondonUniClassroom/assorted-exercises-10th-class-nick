@@ -6,21 +6,31 @@
 //   -- if i is odd, returns false
 bool is_even(int i)
 {
-    return false;
+    return i % 2 == 0;
 }
 
 // Requirements:
 //   -- returns the number of odd numbers in the given vector
 int count_odd(const std::vector<int>& vec)
 {
-    return 0;
+    int count = 0;
+    for (const auto& i: vec)
+        if (!is_even(i))
+            count++;
+
+    return count;
 }
 
 // Requirements:
 //   -- returns the sum of the even numbers in the vector
 int even_sum(const std::vector<int>& vec)
 {
-    return 0;
+    int sum = 0;
+    for (const auto& i: vec)
+        if (is_even(i))
+            sum += i;
+
+    return sum;
 }
 
 // Requirements:
@@ -28,7 +38,16 @@ int even_sum(const std::vector<int>& vec)
 //      divisible by p
 std::vector<int> copy_if_divisible_by(const std::vector<int>& vec, int p)
 {
-    return std::vector<int>{};
+    std::vector<int> ret;
+    std::copy_if(
+        vec.begin(),
+        vec.end(),
+        ret.begin(),
+        [&p] (const int& i) { return i % p == 0; }
+    );
+    return ret;
+
+    )
 }
 
 // Requirements:
