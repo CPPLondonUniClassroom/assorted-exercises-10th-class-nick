@@ -1,5 +1,6 @@
 
 #include "exercise1.hpp"
+#include <algorithm>
 
 // Requirements:
 //   -- if i is even, returns true
@@ -46,8 +47,6 @@ std::vector<int> copy_if_divisible_by(const std::vector<int>& vec, int p)
         [&p] (const int& i) { return i % p == 0; }
     );
     return ret;
-
-    )
 }
 
 // Requirements:
@@ -55,12 +54,23 @@ std::vector<int> copy_if_divisible_by(const std::vector<int>& vec, int p)
 //      zero if there are no such numbers
 int largest_div_by_three(const std::vector<int>& vec)
 {
-    return 0;
+    int largest = 0;
+    for (const auto& i: vec) {
+        if (i % 3 && i > largest) {
+            largest = i;
+        }
+    }
+    return largest;
 }
 
 // Requirements:
 //   -- returns true if the elements in vec are sorted, and false otherwise
 bool is_sorted(const std::vector<int>& vec)
 {
-    return false;
+    for (auto i = vec.begin(); i != vec.end()-1; ++i) {
+        if (*i > *(i+1))
+            return false;
+    return true;
+
+    }
 }
